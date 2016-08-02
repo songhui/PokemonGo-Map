@@ -8,7 +8,11 @@ Notify you the appearance of wild Pokemons close to a specified location, via *t
 The service is based on https://github.com/AHAAAAAAA/PokemonGo-Map. Please follow its own installation guidance and then start the service as follows:
 
 ```bash
-python ./runserver.py --host 0.0.0.0 -a google -u YOUR_USER_NAME -p YOUR_PASSWORD -l YOUR_INTERESTED_LOCATION -st 5 --gmaps-key YOUR_GMAPS_KEY -bn config/YOUR_CONFIG_FILE.yml
+python ./runserver.py --host 0.0.0.0 \
+  -a google -u YOUR_USER_NAME -p YOUR_PASSWORD \
+  -l YOUR_INTERESTED_LOCATION -st 5 \
+  --gmaps-key YOUR_GMAPS_KEY \
+  -bn config/YOUR_CONFIG_FILE.yml
 ```
 
 Only one additional argument, i.e., ```-bn```, or ```--background-notification```, followed by the configuration file of the notifiers. A sample configuraiton file can be found at ```config/notification.example.yml```.

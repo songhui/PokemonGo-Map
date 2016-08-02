@@ -1,0 +1,11 @@
+#The configuration file is a list of "notifiers". This example contains all the
+#types of notifiers that are currently supported - only one at the moment...
+-
+  disabled : True #Comment this line to make the notifier work
+  type : twitter  #Post Pokemons as a tweet
+  pokemons : [25, "130-151"] #Only caring about Pikachu and the big guys after gyarados"
+  credential :
+    consumer_key : ""
+    consumer_secret : ""
+    access_token_key : ""
+    access_token_secret : ""

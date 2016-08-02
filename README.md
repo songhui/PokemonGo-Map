@@ -1,12 +1,31 @@
+# PokemonGo notifications in the background
+
+Notify you the appearance of wild Pokemons close to a specified location, via *twitter*, email, whatsapp, etc. (So far, only twitter is supported).
+* No need to install the server in cloud
+* No need to open the web page to set up Notifications
+* Start the service on your home computer, and go out for hunting - you will be notified on your mobile phone (e.g., your twitter App) when a Snorlax or Eevee appears.
+
+The service is based on https://github.com/AHAAAAAAA/PokemonGo-Map. Please follow its own installation guidance and then start the service as follows:
+
+```bash
+python ./runserver.py --host 0.0.0.0 -a google -u YOUR_USER_NAME -p YOUR_PASSWORD -l YOUR_INTERESTED_LOCATION -st 5 --gmaps-key YOUR_GMAPS_KEY -bn config/YOUR_CONFIG_FILE.yml
+```
+
+Only one additional argument, i.e., ```-bn```, or ```--background-notification```, followed by the configuration file of the notifiers. A sample configuraiton file can be found at ```config/notification.example.yml```.
+
+
+
+Below is the original README file.
+
 # PokemonGo Map![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
 
 
 Live visualization of all the pokemon (with option to show gyms and pokestops) in your area. This is a proof of concept that we can load all the pokemon visible nearby given a location. Currently runs on a Flask server displaying Google Maps with markers on it.
 
-Features: 
+Features:
 
 * Shows Pokemon, Pokestops, and gyms with a clean GUI.
-* Notifications 
+* Notifications
 * Lure information
 * Multithreaded mode
 * Filters
@@ -15,7 +34,7 @@ Features:
 * DB storage (sqlite or mysql) of all found pokemon
 * Incredibly fast, efficient searching algorithm (compared to everything else available)
 
-[![Deploy](https://raw.githubusercontent.com/sych74/PokemonGo-Map-in-Cloud/master/images/deploy-to-jelastic.png)](https://jelastic.com/install-application/?manifest=https://raw.githubusercontent.com/sych74/PokemonGo-Map-in-Cloud/master/manifest.jps) [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://github.com/AHAAAAAAA/PokemonGo-Map/wiki/Heroku-Deployment) 
+[![Deploy](https://raw.githubusercontent.com/sych74/PokemonGo-Map-in-Cloud/master/images/deploy-to-jelastic.png)](https://jelastic.com/install-application/?manifest=https://raw.githubusercontent.com/sych74/PokemonGo-Map-in-Cloud/master/manifest.jps) [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://github.com/AHAAAAAAA/PokemonGo-Map/wiki/Heroku-Deployment)
 
 #[Twitter] (https://twitter.com/PokemapDev), [Website] (https://jz6.github.io/PoGoMap/)#
 

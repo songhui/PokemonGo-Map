@@ -96,6 +96,9 @@ def get_args():
                         action='store_true', default=False)
     parser.add_argument('--db-type', help='Type of database to be used (default: sqlite)',
                         default='sqlite')
+    parser.add_argument('-bn', '--background-notification',
+                        help='Notification without webserver. Path to the configuration file',
+                        default='')
     parser.add_argument('--db-name', help='Name of the database to be used')
     parser.add_argument('--db-user', help='Username for the database')
     parser.add_argument('--db-pass', help='Password for the database')

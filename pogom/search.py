@@ -55,7 +55,7 @@ def send_map_request(api, position):
 def get_new_coords(init_loc, distance, bearing):
     """ Given an initial lat/lng, a distance(in kms), and a bearing (degrees),
     this will calculate the resulting lat/lng coordinates.
-    """ 
+    """
     R = 6378.1 #km radius of the earth
     bearing = math.radians(bearing)
 
@@ -82,7 +82,7 @@ def generate_location_steps(initial_loc, step_count):
 
     yield (initial_loc[0], initial_loc[1], 0) #insert initial location
 
-    ring = 1            
+    ring = 1
     loc = initial_loc
     while ring < step_count:
         #Set loc to start at top left
@@ -182,12 +182,21 @@ def search_thread(q):
 #
 def search_loop(args):
     i = 0
+    config['CURRENT'] = 0
+    
     while True:
         log.info("Search loop {} starting".format(i))
         try:
             search(args, i)
             log.info("Search loop {} complete.".format(i))
             i += 1
+
+            multi_pos = config.get('MULTI_POS')
+            if multi_pos:
+                curr = i % len(multi_pos)
+                config['NEXT_LOCATION'] = {'lat':multi_pos[curr][0], 'lon':multi_pos[curr][1]}
+                config['CURRENT'] = curr
+
         except Exception as e:
             log.error('Scanning error @ {0.__class__.__name__}: {0}'.format(e))
         finally:

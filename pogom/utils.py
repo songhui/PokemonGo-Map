@@ -99,6 +99,8 @@ def get_args():
     parser.add_argument('-bn', '--background-notification',
                         help='Notification without webserver. Path to the configuration file',
                         default='')
+    parser.add_argument('-al', '--additional-location',
+                        help='Additional location to search. Splitted by "|"')
     parser.add_argument('--db-name', help='Name of the database to be used')
     parser.add_argument('--db-user', help='Username for the database')
     parser.add_argument('--db-pass', help='Password for the database')

@@ -8,6 +8,8 @@ import pytz
 from tzlocal import get_localzone
 from time import strftime, ctime
 
+from . import config
+
 args = get_args()
 #temporarily disabling because -o and -i is removed from 51f651228c00a96b86f5c38d1a2d53b32e5d9862
 #IGNORE = None
@@ -37,6 +39,7 @@ class Notifier:
         print self.filter
 
     def notify(self, id, name, lat, lng, expire):
+        #print "!"+config['MULTI_POS_NAMES']
         if id in self.filter:
             self._notify(id, name, lat, lng, expire)
 
@@ -55,6 +58,12 @@ class TwitterNotifier(Notifier):
         expire = expire.astimezone(get_localzone())
         timestr = expire.strftime("%H:%M:%S %Z")
         message = "A wild %s is here until %s http://maps.google.com/?q=%f,%f" % (name,timestr,lat,lng)
+        try:
+            prefix = config['MULTI_POS_NAMES'][config['CURRENT']]
+            message = prefix + message
+        except:
+            pass
+
         print message
         try:
             status = self.api.PostUpdate(status=message) #TODO: Not using twitter for duplication checking

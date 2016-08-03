@@ -67,6 +67,20 @@ if __name__ == '__main__':
     config['LOCALE'] = args.locale
     config['CHINA'] = args.china
 
+    multi_pos = []
+    try:
+        additional_loc_name = args.additional_location.split('|')
+        multi_pos.extend([get_pos_by_name(name) for name in additional_loc_name])
+    except:
+        log.info('Invalid addtional names')
+
+    if multi_pos:
+        multi_pos = [position] + multi_pos
+        config['MULTI_POS_NAMES'] = ["[{}]".format(x[0:5].upper()) for x in [args.location] + additional_loc_name]
+        print config['MULTI_POS_NAMES']
+    config['MULTI_POS'] = multi_pos
+    print multi_pos
+
     if not args.only_server:
         # Gather the pokemons!
         if not args.mock:

@@ -19,6 +19,12 @@ Only one additional argument, i.e., ```-bn```, or ```--background-notification``
 
 ![screenshot](https://raw.githubusercontent.com/songhui/PokemonGo-Notify/master/static/images/twitter-notifier.PNG)
 
+##Twitter notifiers
+
+You need to obtain a Twitter OAuth access token, following the guide [here](https://dev.twitter.com/oauth/overview/application-owner-access-tokens). The Notification will be posted as a normal public tweet, so you might want to apply for a new Twitter account (the _sender_) just for sending those notification tweets, and use your normal twitter account (the receiver) to follow  the sender and to receive the notification. Remember to switch on the [mobile notification](https://support.twitter.com/articles/20169887) on your _receiver_ twitter App, so that you can get an alert on your mobile phone as soon as a notification arrives.
+
+
+
 Below is the original README file.
 
 # PokemonGo Map![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)

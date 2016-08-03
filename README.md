@@ -17,7 +17,7 @@ python ./runserver.py --host 0.0.0.0 \
 
 Only one additional argument, i.e., ```-bn```, or ```--background-notification```, followed by the configuration file of the notifiers. A sample configuraiton file can be found at ```config/notification.example.yml```.
 
-
+![screenshot](https://raw.githubusercontent.com/songhui/PokemonGo-Notify/master/static/images/twitter-notifier.PNG)
 
 Below is the original README file.
 

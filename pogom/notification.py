@@ -51,11 +51,15 @@ class TwitterNotifier(Notifier):
         Notifier.__init__(self, config)
 
     def _notify(self, id, name, lat, lng, expire):
-        #local_time = datetime.strptime(expire,"%a %b %d %H:%M:%S %Y")
-        timestr = expire.strftime("%H:%M:%S")
+        expire = expire.replace(tzinfo=pytz.timezone('UTC'))
+        expire = expire.astimezone(get_localzone())
+        timestr = expire.strftime("%H:%M:%S %Z")
         message = "A wild %s is here until %s http://maps.google.com/?q=%f,%f" % (name,timestr,lat,lng)
         print message
-        status = self.api.PostUpdate(status=message, latitude=lat, longitude=lng)
+        try:
+            status = self.api.PostUpdate(status=message) #TODO: Not using twitter for duplication checking
+        except twitter.TwitterError:
+            return
         #print(status)
 
 notifiers = []
